@@ -56,8 +56,8 @@ def draw(win,width,grid):
     pygame.display.update()
 
 class grid():
-    def __init__(self,w = 3,s = [[0,1,2],[3,4,5],[6,7,8]]):
-        self.width = w
+    def __init__(self,s = [[0,1,2],[3,4,5],[6,7,8]]):
+        self.width = 3
         self.startState = s
         self.state = s
 
@@ -67,19 +67,7 @@ class grid():
                 if self.state[i][j] == 0:
                     self.emptyLoc = (i,j)
 
-        # setup the goal state of the grid
-        self.goalState = []
-        curr = []
-        c = 0
-        for i in range(w * w):
-            curr.append(i + 1)
-            c += 1
-            if c == w:
-                self.goalState.append(curr)
-                curr = []
-                c = 0
-        self.goalState[w - 1][-1] = 0
-
+        self.goalState = [[1,2,3],[4,5,6],[7,8,0]]
         self.prev = None
         self.g = 0
         self.f = 0
@@ -190,7 +178,7 @@ class grid():
                     num = copyState[slideLoc[0]][slideLoc[1]]
                     copyState[self.emptyLoc[0]][self.emptyLoc[1]] = num
                     copyState[slideLoc[0]][slideLoc[1]] = 0
-                    newStates.append(grid(self.width,copyState))
+                    newStates.append(grid(copyState))
         return newStates
 
     #heuristic function for a star search
