@@ -7,7 +7,7 @@ import numpy as np
 WIDTH = 800
 
 WIN = pygame.display.set_mode((WIDTH, WIDTH))
-pygame.display.set_caption("Maze Runner")
+pygame.display.set_caption("9Tile")
 
 #Initializing the font for game text
 pygame.font.init()
